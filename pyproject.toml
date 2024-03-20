@@ -1,0 +1,35 @@
+[build-system]
+build-backend = 'maturin'
+requires = [ 'maturin>=0.13,<0.14' ]
+
+
+[project]
+classifiers = [
+  'Programming Language :: Rust',
+  'Programming Language :: Python :: Implementation :: CPython',
+  'Programming Language :: Python :: Implementation :: PyPy',
+]
+name = 'alcedo'
+requires-python = '>=3.8'
+readme = 'README.md'
+
+
+[tool.poetry]
+name = 'alcedo'
+version = '0.1.0'
+description = 'Oxidized HTTP Client for Python'
+authors = [ 'Sitt Guruvanich <aekazitt+github@gmail.com>' ]
+
+
+[tool.poetry.dependencies]
+python = '^3.8'
+
+
+[tool.poetry.dev-dependencies]
+maturin = '^0.13.1'
+ruff = '^0.3.3'
+
+
+[tool.poetry.scripts]
+dev = 'maturin develop'
+build = 'maturin build'
