@@ -30,7 +30,7 @@ fn get(url: &str) -> PyResult<Response> {
             })
             .collect::<HashMap<String, String>>(),
         body: response.text().unwrap(),
-        reason: "lol".to_string(),  // TODO: give me a reason
+        reason: "lol".to_string(), // TODO: give me a reason
     })
 }
 
