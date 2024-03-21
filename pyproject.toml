@@ -42,6 +42,7 @@ uvicorn = '^0.29.0'
 
 [tool.pytest.ini_options]
 addopts = '--durations=0 --strict-markers --tb=short'
+markers = [ 'httpx: httpx benchmarks optional when running tests' ]
 python_files = '*.py'
 pythonpath = [ 'alcedo.pyi' ]
 testpaths = [ 'tests' ]
