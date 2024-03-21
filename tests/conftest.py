@@ -29,6 +29,12 @@ def pytest_addoption(parser: Parser) -> None:
     default=False,
     help="Include httpx when running benchmarks",
   )
+  parser.addoption(
+    "--bench-against-requests",
+    action="store_true",
+    default=False,
+    help="Include request when running benchmarks",
+  )
 
 
 def pytest_collection_modifyitems(config: Config, items: List[Item]) -> None:
@@ -36,6 +42,10 @@ def pytest_collection_modifyitems(config: Config, items: List[Item]) -> None:
     if "httpx" in item.keywords and not config.getoption("--bench-against-httpx"):
       item.add_marker(
         mark.skip(reason="Test excluded without flag; Add --bench-against-httpx flag to run test.")
+      )
+    elif "requests" in item.keywords and not config.getoption("--bench-against-requests"):
+      item.add_marker(
+        mark.skip(reason="Test excluded without flag; Add --bench-against-requests flag to run test.")
       )
 
 

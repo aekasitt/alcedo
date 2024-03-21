@@ -44,13 +44,17 @@ maturin = '^0.13.1'
 mypy = '^1.9.0'
 orjson = '^3.9.15'
 pytest = '^8.1.1'
+requests = '^2.31.0'
 ruff = '^0.3.3'
 uvicorn = '^0.29.0'
 
 
 [tool.pytest.ini_options]
 addopts = '--durations=0 --strict-markers --tb=short'
-markers = [ 'httpx: httpx benchmarks optional when running tests' ]
+markers = [
+  'httpx: httpx benchmarks optional when running tests',
+  'requests: requests benchmarks optional when running tests',
+]
 python_files = '*.py'
 pythonpath = [ 'alcedo.pyi' ]
 testpaths = [ 'tests' ]
