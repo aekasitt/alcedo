@@ -24,6 +24,12 @@ def pytest_addoption(parser: Parser) -> None:
   :param Parser parser: pytest Parser instance passed when running via pytest cli
   """
   parser.addoption(
+    "--bench-against-aiohttp",
+    action="store_true",
+    default=False,
+    help="Include aiohttp when running benchmarks",
+  )
+  parser.addoption(
     "--bench-against-httpx",
     action="store_true",
     default=False,
@@ -33,19 +39,27 @@ def pytest_addoption(parser: Parser) -> None:
     "--bench-against-requests",
     action="store_true",
     default=False,
-    help="Include request when running benchmarks",
+    help="Include requests when running benchmarks",
   )
 
 
 def pytest_collection_modifyitems(config: Config, items: List[Item]) -> None:
   for item in items:
-    if "httpx" in item.keywords and not config.getoption("--bench-against-httpx"):
+    if "aiohttp" in item.keywords and not config.getoption("--bench-against-aiohttp"):
+      item.add_marker(
+        mark.skip(
+          reason="Test excluded without flag; Add --bench-against-aiohttp flag to run test."
+        )
+      )
+    elif "httpx" in item.keywords and not config.getoption("--bench-against-httpx"):
       item.add_marker(
         mark.skip(reason="Test excluded without flag; Add --bench-against-httpx flag to run test.")
       )
     elif "requests" in item.keywords and not config.getoption("--bench-against-requests"):
       item.add_marker(
-        mark.skip(reason="Test excluded without flag; Add --bench-against-requests flag to run test.")
+        mark.skip(
+          reason="Test excluded without flag; Add --bench-against-requests flag to run test."
+        )
       )
 
 
