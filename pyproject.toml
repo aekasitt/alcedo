@@ -15,10 +15,11 @@ readme = 'README.md'
 
 
 [tool.poetry]
+authors = [ 'Sitt Guruvanich <aekazitt+github@gmail.com>' ]
+description = 'Oxidized HTTP Client for Python'
 name = 'alcedo'
 version = '0.1.0'
-description = 'Oxidized HTTP Client for Python'
-authors = [ 'Sitt Guruvanich <aekazitt+github@gmail.com>' ]
+packages = [{include='alcedo.pyi'}]
 
 
 [tool.poetry.dependencies]
