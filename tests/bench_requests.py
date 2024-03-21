@@ -19,21 +19,21 @@ from tests import *
 
 
 @mark.requests
-def test_httpx_get_json_endpoint() -> None:
+def test_requests_get_json_endpoint() -> None:
   for _ in range(1_000):
     response: Response = get(f"{ TEST_ENDPOINT }/json")
     assert response.json() == {"detail": "OK"}
 
 
 @mark.requests
-def test_httpx_get_orjson_endpoint() -> None:
+def test_requests_get_orjson_endpoint() -> None:
   for _ in range(1_000):
     response: Response = get(f"{ TEST_ENDPOINT }/orjson")
     assert response.json() == {"detail": "OK"}
 
 
 @mark.requests
-def test_httpx_get_plaintext_endpoint() -> None:
+def test_requests_get_plaintext_endpoint() -> None:
   for _ in range(1_000):
     response: Response = get(f"{ TEST_ENDPOINT }/plaintext")
     assert response.text == "OK"
