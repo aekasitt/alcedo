@@ -21,7 +21,7 @@ from pytest import fixture
 from uvicorn import Config, Server
 
 
-class TestServer:
+class ThreadedUvicorn:
     def __init__(self, config: Config):
         self.server = Server(config)
         self.thread = Thread(daemon=True, target=self.server.run)
@@ -56,7 +56,7 @@ def setup_teardown_api_server() -> Generator:
     async def generic_endpoint() -> str:
         return "OK"
 
-    server: TestServer = TestServer(Config(app, host='localhost', port=6969))
+    server: ThreadedUvicorn = ThreadedUvicorn(Config(app, host='localhost', port=6969))
     server.start()
 
     yield
