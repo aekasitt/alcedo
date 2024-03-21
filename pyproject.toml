@@ -39,6 +39,6 @@ uvicorn = '^0.29.0'
 
 
 [tool.pytest.ini_options]
-addopts = '--strict-markers --tb=short'
+addopts = '--durations=0 --strict-markers --tb=short'
 python_files = '*.py'
 testpaths = [ 'tests' ]
