@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 use pyo3::prelude::*;
 use pyo3::{create_exception, exceptions::PyException};
 use reqwest::blocking::get as r_get;

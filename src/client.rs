@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 use crate::{response::Response, APP_USER_AGENT};
 use pyo3::prelude::*;
 use reqwest::blocking::Client as BlockingClient;

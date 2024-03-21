@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 use crate::HTTPError;
 use miniserde::json::from_str;
 use pyo3::prelude::*;
