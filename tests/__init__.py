@@ -16,7 +16,7 @@ from threading import Thread
 from typing import Generator
 
 ### Third-party packages ###
-from fastapi import FastAPI
+from litestar import Litestar, get
 from pytest import fixture
 from uvicorn import Config, Server
 
@@ -44,25 +44,22 @@ class ThreadedUvicorn:
 @fixture(scope="session", autouse=True)
 def setup_teardown_api_server() -> Generator:
     """
-    Sets up a FastAPI server with a
+    Sets up a Litestar server with a generic get endpoint
 
     ---
     :returns: TestClient
     """
-    print("setup")
-    app: FastAPI = FastAPI()
 
-    @app.get("/")
+    @get("/")
     async def generic_endpoint() -> str:
         return "OK"
-
+    app: Litestar = Litestar(route_handlers=[generic_endpoint])
     server: ThreadedUvicorn = ThreadedUvicorn(Config(app, host='localhost', port=6969))
     server.start()
 
     yield
 
     server.stop()
-    print("teardown")
 
 
 __all__ = ["setup_teardown_api_server"]
