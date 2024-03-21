@@ -10,9 +10,6 @@
 # HISTORY:
 # *************************************************************
 
-### Standard packages ###
-from json import loads
-
 ### Local modules ###
 from alcedo import Response, get
 from tests import *
@@ -21,16 +18,16 @@ from tests import *
 def test_alcedo_get_json_endpoint() -> None:
   for _ in range(1_000):
     response: Response = get(f"{ TEST_ENDPOINT }/json")
-    assert loads(response) == {"detail": "OK"}
+    assert response.json() == {"detail": "OK"}
 
 
 def test_alcedo_get_orjson_endpoint() -> None:
   for _ in range(1_000):
     response: Response = get(f"{ TEST_ENDPOINT }/orjson")
-    assert loads(response) == {"detail": "OK"}
+    assert response.json() == {"detail": "OK"}
 
 
 def test_alcedo_get_plaintext_endpoint() -> None:
   for _ in range(1_000):
     response: Response = get(f"{ TEST_ENDPOINT }/plaintext")
-    assert response == "OK"
+    assert response.text() == "OK"
