@@ -18,13 +18,13 @@ from tests import *
 def test_alcedo_get_json_endpoint() -> None:
   for _ in range(1_000):
     response: Response = get(f"{ TEST_ENDPOINT }/json")
-    assert response.json() == {"detail": "OK"}
+    assert response.json() == {"detail": "OK", "status": 200}
 
 
 def test_alcedo_get_orjson_endpoint() -> None:
   for _ in range(1_000):
     response: Response = get(f"{ TEST_ENDPOINT }/orjson")
-    assert response.json() == {"detail": "OK"}
+    assert response.json() == {"detail": "OK", "status": 200}
 
 
 def test_alcedo_get_plaintext_endpoint() -> None:

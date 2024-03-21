@@ -35,11 +35,11 @@ def run_test_server() -> None:
 
   @app.get("/json", response_class=JSONResponse)
   async def json_endpoint() -> dict:
-    return {"detail": "OK"}
+    return {"detail": "OK", "status": 200}
 
   @app.get("/orjson", response_class=ORJSONResponse)
   async def orjson_endpoint() -> dict:
-    return {"detail": "OK"}
+    return {"detail": "OK", "status": 200}
 
   run(app, host="localhost", port=6969)
 
