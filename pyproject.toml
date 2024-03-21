@@ -32,4 +32,5 @@ ruff = '^0.3.3'
 
 [tool.poetry.group.dev.dependencies]
 fastapi = "^0.110.0"
+pytest = "^8.1.1"
 
