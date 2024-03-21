@@ -27,7 +27,7 @@ TEST_ENDPOINT: str = f"http://{ TEST_HOST }:{ TEST_PORT }"
 
 
 def run_test_server() -> None:
-  app: FastAPI = FastAPI(openapi_url=False)
+  app: FastAPI = FastAPI()
 
   @app.get("/plaintext", response_class=PlainTextResponse)
   async def plaintext_endpoint() -> str:
