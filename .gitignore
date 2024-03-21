@@ -13,9 +13,15 @@ dist
 *.egg-info
 *.egg
 
+# Mypy
+.mypy_cache
+
 # Pyenv
 .python-version
 fleet.toml
+
+# Pytest
+.pytest_cache
 
 # Ruff cache
 .ruff_cache

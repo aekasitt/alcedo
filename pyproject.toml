@@ -14,6 +14,13 @@ requires-python = '>=3.8'
 readme = 'README.md'
 
 
+[tool.mypy]
+disallow_incomplete_defs = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+
 [tool.poetry]
 authors = [ 'Sitt Guruvanich <aekazitt+github@gmail.com>' ]
 description = 'Oxidized HTTP Client for Python'
@@ -34,6 +41,7 @@ optional = true
 fastapi = '^0.110.0'
 httpx = '^0.27.0'
 maturin = '^0.13.1'
+mypy = '^1.9.0'
 orjson = '^3.9.15'
 pytest = '^8.1.1'
 ruff = '^0.3.3'
