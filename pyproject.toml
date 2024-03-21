@@ -29,3 +29,7 @@ python = '^3.8'
 [tool.poetry.dev-dependencies]
 maturin = '^0.13.1'
 ruff = '^0.3.3'
+
+[tool.poetry.group.dev.dependencies]
+fastapi = "^0.110.0"
+
