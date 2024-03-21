@@ -12,10 +12,22 @@
 
 ### Local modules ###
 from alcedo import Response, get
-from tests import setup_teardown_api_server
+from tests import *
 
 
-def test_alcedo_get_generic_endpoint() -> None:
-    for _ in range(10_000):
-        response: Response = get("http://localhost:6969")
-        assert response == "OK"
+def test_alcedo_get_json_endpoint() -> None:
+  for _ in range(1_000):
+    response: Response = get(f"{ TEST_ENDPOINT }/json")
+    assert response == '{"detail":"OK"}'
+
+
+def test_alcedo_get_orjson_endpoint() -> None:
+  for _ in range(1_000):
+    response: Response = get(f"{ TEST_ENDPOINT }/orjson")
+    assert response == '{"detail":"OK"}'
+
+
+def test_alcedo_get_plaintext_endpoint() -> None:
+  for _ in range(1_000):
+    response: Response = get(f"{ TEST_ENDPOINT }/plaintext")
+    assert response == "OK"

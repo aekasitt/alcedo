@@ -14,10 +14,22 @@
 from httpx import Response, get
 
 ### Local modules ###
-from tests import setup_teardown_api_server
+from tests import *
 
 
-def test_httpx_get_generic_endpoint() -> None:
-    for _ in range(10_000):
-        response: Response = get("http://localhost:6969")
-        assert response.text == "OK"
+def test_httpx_get_json_endpoint() -> None:
+  for _ in range(1_000):
+    response: Response = get(f"{ TEST_ENDPOINT }/json")
+    assert response.json() == {"detail": "OK"}
+
+
+def test_httpx_get_orjson_endpoint() -> None:
+  for _ in range(1_000):
+    response: Response = get(f"{ TEST_ENDPOINT }/orjson")
+    assert response.json() == {"detail": "OK"}
+
+
+def test_httpx_get_plaintext_endpoint() -> None:
+  for _ in range(1_000):
+    response: Response = get(f"{ TEST_ENDPOINT }/plaintext")
+    assert response.text == "OK"

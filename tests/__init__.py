@@ -17,30 +17,46 @@ from typing import Generator
 
 ### Third-party packages ###
 from fastapi import FastAPI
-from fastapi.responses import PlainTextResponse
+from fastapi.responses import JSONResponse, PlainTextResponse, ORJSONResponse
 from pytest import fixture
 from uvicorn import run
 
+TEST_HOST: str = "localhost"
+TEST_PORT: int = 6969
+TEST_ENDPOINT: str = f"http://{ TEST_HOST }:{ TEST_PORT }"
+
+
 def run_test_server() -> None:
-    app: FastAPI = FastAPI(openapi_url=False)
-    @app.get("/", response_class=PlainTextResponse)
-    async def generic_test_endpoint() -> str:
-        return "OK"
-    run(app, host="localhost", port=6969)
+  app: FastAPI = FastAPI(openapi_url=False)
+
+  @app.get("/plaintext", response_class=PlainTextResponse)
+  async def plaintext_endpoint() -> str:
+    return "OK"
+
+  @app.get("/json", response_class=JSONResponse)
+  async def json_endpoint() -> dict:
+    return {"detail": "OK"}
+
+  @app.get("/orjson", response_class=ORJSONResponse)
+  async def orjson_endpoint() -> dict:
+    return {"detail": "OK"}
+
+  run(app, host="localhost", port=6969)
+
 
 @fixture(scope="session", autouse=True)
 def setup_teardown_api_server() -> Generator:
-    """
-    Sets up a FastAPI server with a generic get-endpoint
+  """
+  Sets up a FastAPI server with a generic get-endpoint
 
-    ---
-    :returns: Generator
-    """
-    process: Process = Process(daemon=True, target=run_test_server)
-    process.start()
-    sleep(5e-1)  # setup-delay
-    yield
-    process.terminate()
+  ---
+  :returns: Generator
+  """
+  process: Process = Process(daemon=True, target=run_test_server)
+  process.start()
+  sleep(0.5)  # setup-delay
+  yield
+  process.terminate()
 
 
-__all__ = ["setup_teardown_api_server"]
+__all__ = ("TEST_ENDPOINT", "setup_teardown_api_server")
