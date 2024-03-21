@@ -49,6 +49,7 @@ pytest-asyncio = '^0.23.6'
 requests = '^2.31.0'
 ruff = '^0.3.3'
 uvicorn = '^0.29.0'
+types-requests = "^2.31.0.20240311"
 
 
 [tool.pytest.ini_options]
