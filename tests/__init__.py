@@ -11,55 +11,36 @@
 # *************************************************************
 
 ### Standard packages ###
-from asyncio import run, sleep
-from threading import Thread
+from multiprocessing import Process
+from time import sleep
 from typing import Generator
 
 ### Third-party packages ###
-from litestar import Litestar, get
+from fastapi import FastAPI
+from fastapi.responses import PlainTextResponse
 from pytest import fixture
-from uvicorn import Config, Server
+from uvicorn import run
 
-
-class ThreadedUvicorn:
-    def __init__(self, config: Config):
-        self.server = Server(config)
-        self.thread = Thread(daemon=True, target=self.server.run)
-
-    def start(self):
-        self.thread.start()
-        run(self.wait_for_started())
-
-    async def wait_for_started(self):
-        while not self.server.started:
-            await sleep(1e-3)
-
-    def stop(self):
-        if self.thread.is_alive():
-            self.server.should_exit = True
-            while self.thread.is_alive():
-                continue
-
+def run_test_server() -> None:
+    app: FastAPI = FastAPI(openapi_url=False)
+    @app.get("/", response_class=PlainTextResponse)
+    async def generic_test_endpoint() -> str:
+        return "OK"
+    run(app, host="localhost", port=6969)
 
 @fixture(scope="session", autouse=True)
 def setup_teardown_api_server() -> Generator:
     """
-    Sets up a Litestar server with a generic get endpoint
+    Sets up a FastAPI server with a generic get-endpoint
 
     ---
-    :returns: TestClient
+    :returns: Generator
     """
-
-    @get("/")
-    async def generic_endpoint() -> str:
-        return "OK"
-    app: Litestar = Litestar(route_handlers=[generic_endpoint])
-    server: ThreadedUvicorn = ThreadedUvicorn(Config(app, host='localhost', port=6969))
-    server.start()
-
+    process: Process = Process(daemon=True, target=run_test_server)
+    process.start()
+    sleep(5e-1)  # setup-delay
     yield
-
-    server.stop()
+    process.terminate()
 
 
 __all__ = ["setup_teardown_api_server"]
