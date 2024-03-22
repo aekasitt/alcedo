@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MIT
 
 use crate::{response::Response, APP_USER_AGENT};
-use pyo3::prelude::*;
+use pyo3::prelude::{pyclass, pymethods, PyResult};
 use reqwest::blocking::Client as BlockingClient;
 use reqwest::header::{HeaderMap, HeaderName, HeaderValue};
 use reqwest::Method;
+
 use std::{collections::HashMap, str::FromStr};
 
 fn dict_to_headers(dict: HashMap<String, String>) -> HeaderMap {

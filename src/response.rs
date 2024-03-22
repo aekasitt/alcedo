@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 
 use crate::HTTPError;
+
 use pyo3::exceptions::PyValueError;
-use pyo3::prelude::*;
-use pyo3::{import_exception, IntoPy, PyObject, Python};
+use pyo3::{import_exception, pyclass, pymethods, IntoPy, PyErr, PyObject, PyResult, Python};
 use serde::de::{self, DeserializeSeed, Deserializer, MapAccess, SeqAccess, Visitor};
 use std::collections::{BTreeMap, HashMap};
 use std::fmt::{self, Formatter};

@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MIT
 
-use pyo3::prelude::*;
-use pyo3::{create_exception, exceptions::PyException};
+use pyo3::exceptions::PyException;
+use pyo3::types::PyModule;
+use pyo3::{create_exception, pyfunction, pymodule, wrap_pyfunction, PyResult, Python};
 use reqwest::blocking::get as r_get;
 use std::collections::HashMap;
 use std::str::FromStr;
