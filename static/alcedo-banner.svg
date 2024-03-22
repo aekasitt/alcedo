@@ -96,7 +96,7 @@
     x='265px'
     y='190px'
     >
-    Oxidized HTTP Client for Python
+    Oxidized and Optimistic HTTP Client for Python;
   </text>
   <text
     font-family='Courgette'
@@ -104,6 +104,6 @@
     x='265px'
     y='215px'
     >
-    Proving that a Rust-rewrite does not mean good.
+    Minimalist implementation assuming best cases.
   </text>
 </svg>

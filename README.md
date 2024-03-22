@@ -26,7 +26,6 @@ But it aims to bring to Python the speed and feature-richness of Rust packages
 like...
 
 * 🦀 hyper
-* 🦀 miniserde
 * 🦀 reqwest
 * 🦀 serde
 
