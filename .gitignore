@@ -20,6 +20,9 @@ dist
 .python-version
 fleet.toml
 
+# Pypi token
+pypi-token.pypi
+
 # Pytest
 .pytest_cache
 
