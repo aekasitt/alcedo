@@ -40,7 +40,6 @@ impl<'de, 'a> DeserializeSeed<'de> for JSONValue<'a> {
     }
 }
 
-
 impl<'de, 'a> Visitor<'de> for JSONValue<'a> {
     type Value = PyObject;
 
