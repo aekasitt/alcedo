@@ -29,6 +29,31 @@ like...
 * 🦀 reqwest
 * 🦀 serde
 
+## Getting started
+
+TBD;
+
+## Example usage
+
+```py
+print("Hello, World!")
+```
+
+## Roadmap
+
+* Write (actual) asynchronous tests for `aiohttp` benchmarks.
+* Create asynchronous implementation for `alcedo.Client`.
+* Write asynchronous tests.
+* Write malformed-json test servers.
+* Create implementation where POST body can be attached.
+* Create implementation where DELETE requests can be made.
+* Write asynchronous tests for `httpx` and `requests`
+* Write benchmarks for `httpx.Client` and `requests.Session`
+
+## Contributions
+
+I indent by 2 by the way, are you sure you want to contribute ?
+
 ## License
 
 This project is licensed under the terms of the MIT license.
