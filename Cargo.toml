@@ -1,15 +1,17 @@
 [lib]
-name = "alcedo"
-crate-type = ["cdylib"]
+name = 'alcedo'
+crate-type = ['cdylib']
 
 
 [package]
-name = "alcedo"
-version = "0.1.0"
-edition = "2021"
+name = 'alcedo'
+version = '0.1.0'
+edition = '2021'
 
 
 [dependencies]
-miniserde = "0.1.24"
-pyo3 = { version = "0.20.3", features = ["extension-module"] }
-reqwest = { version = "0.11.26", features = ["json", "blocking"] }
+pyo3 = { version = '0.20.3', features = ['extension-module'] }
+reqwest = { version = '0.11.26', features = ['json', 'blocking'] }
+serde = '1.0.197'
+serde_derive = '1.0.197'
+serde_json = "1.0.114"
