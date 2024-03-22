@@ -9,7 +9,7 @@
 [![Size](https://img.shields.io/github/repo-size/aekasitt/alcedo)](.)
 [![Last commit](https://img.shields.io/github/last-commit/aekasitt/alcedo/master)](.)
 
-![Alcedo banner](https://github.com/aekasitt/alcedo/tree/master/static/alcedo-banner.svg)
+![Alcedo banner](https://github.com/aekasitt/alcedo/blob/master/static/alcedo-banner.svg)
 
 This project aims to be the feature-incomplete version of [httpx](https://github.com/encode/httpx)
 and written in Rust.
