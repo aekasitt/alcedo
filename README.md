@@ -9,25 +9,25 @@
 [![Size](https://img.shields.io/github/repo-size/aekasitt/alcedo)](.)
 [![Last commit](https://img.shields.io/github/last-commit/aekasitt/alcedo/master)](.)
 
-![Alcedo banner](static/alcedo-banner.svg)
+![Alcedo banner](https://github.com/aekasitt/alcedo/tree/master/static/alcedo-banner.svg)
 
 This project aims to be the feature-incomplete version of [httpx](https://github.com/encode/httpx)
 and written in Rust.
 
 Will this be a drop-in replacement for any of the leading packages like...
 
-* 🐍 aiohttp ?
-* 🐍 httpx ?
-* 🐍 requests ?
+- 🐍 aiohttp [![PyPI](https://img.shields.io/badge/PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/aiohttp) [![Docs](https://img.shields.io/readthedocs/aiohttp?logo=readthedocs)](https://docs.aiohttp.org/en/stable/) ?
+- 🐍 httpx [![PyPI](https://img.shields.io/badge/PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/httpx) [![Docs](https://img.shields.io/badge/MkDocs-526CFE?logo=materialformkdocs&logoColor=white)](https://www.python-httpx.org/) ?
+- 🐍 requests [![PyPI](https://img.shields.io/badge/PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/requests) [![Docs](https://img.shields.io/readthedocs/requests?logo=readthedocs)](https://requests.readthedocs.io/en/latest/) ?
 
 ### Probably not.
 
 But it aims to bring to Python the speed and feature-richness of Rust packages
 like...
 
-* 🦀 hyper
-* 🦀 reqwest
-* 🦀 serde
+- 🦀 [hyper](https://github.com/hyperium/hyper) [![Crates](https://img.shields.io/badge/hyper-%F0%9F%93%A6-264323)](https://crates.io/crates/hyper) [![Docs](https://img.shields.io/badge/Docs--rs-353535?logo=docs.rs)](https://docs.rs/hyper/latest/hyper/)
+- 🦀 [reqwest](https://github.com/seanmonstar/reqwest) [![Crates](https://img.shields.io/badge/reqwest-%F0%9F%93%A6-264323)](https://crates.io/crates/reqwest) [![Docs](https://img.shields.io/badge/Docs--rs-353535?logo=docs.rs)](https://docs.rs/reqwest/latest/reqwest/)
+- 🦀 [serde](https://github.com/serde-rs/serde) [![Crates](https://img.shields.io/badge/serde-%F0%9F%93%A6-264323)](https://crates.io/creates/serde) [![Docs](https://img.shields.io/badge/Docs--rs-353535?logo=docs.rs)](https://docs.rs/serde/latest/serde/)
 
 ## Getting started
 
@@ -41,18 +41,31 @@ print("Hello, World!")
 
 ## Roadmap
 
-* Write (actual) asynchronous tests for `aiohttp` benchmarks.
-* Create asynchronous implementation for `alcedo.Client`.
-* Write asynchronous tests.
-* Write malformed-json test servers.
-* Create implementation where POST body can be attached.
-* Create implementation where DELETE requests can be made.
-* Write asynchronous tests for `httpx` and `requests`
-* Write benchmarks for `httpx.Client` and `requests.Session`
+- Write (actual) asynchronous tests for `aiohttp` benchmarks.
+- Create asynchronous implementation for `alcedo.Client`.
+- Write asynchronous tests.
+- Write malformed-json test servers.
+- Create implementation where POST body can be attached.
+- Create implementation where DELETE requests can be made.
+- Write asynchronous tests for `httpx` and `requests`
+- Write benchmarks for `httpx.Client` and `requests.Session`
 
 ## Contributions
 
-I indent by 2 by the way, are you sure you want to contribute ?
+
+To contribute to the project, fork the repository and clone to your local device and development
+dependencies including three extra libraries not included in final builds as such:
+
+* [mypy](https://github.com/python/mypy) [![PyPI]()](https://pypi.org/project/mypy) [![Docs](https://img.shields.io/readthedocs/mypy?logo=readthedocs)](https://mypy.readthedocs.io/en/stable/)- Optional static typing for Python
+* [pytest](https://github.com/pytest-dev/pytest) [![PyPI](https://img.shields.io/badge/PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/pytest) [![Docs](https://img.shields.io/badge/Sphinx-0A507A?logo=sphinx)]- The pytest framework makes it easy to write small tests, yet scales to support complex functional testing
+* [ruff](https://github.com/astral-sh/ruff) [![PyPI](https://img.shields.io/badge/PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/ruff) [![Docs](https://img.shields.io/badge/MkDocs-526CFE?logo=materialformkdocs&logoColor=white)](https://docs.astral.sh/ruff)- An extremely fast Python linter and code formatter, written in Rust.
+
+Use the following commands to setup your local environment with development dependencies:
+
+```bash
+pip install --user poetry
+poetry install --with dev
+```
 
 ## License
 
