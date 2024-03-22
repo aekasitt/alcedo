@@ -52,13 +52,13 @@ print("Hello, World!")
 
 ## Contributions
 
-
 To contribute to the project, fork the repository and clone to your local device and development
-dependencies including three extra libraries not included in final builds as such:
+dependencies including four extra libraries not included in final builds as such:
 
-* [mypy](https://github.com/python/mypy) [![PyPI](https://img.shields.io/badge/PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/mypy) [![Docs](https://img.shields.io/readthedocs/mypy?logo=readthedocs)](https://mypy.readthedocs.io/en/stable/)- Optional static typing for Python
-* [pytest](https://github.com/pytest-dev/pytest) [![PyPI](https://img.shields.io/badge/PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/pytest) [![Docs](https://img.shields.io/badge/Sphinx-0A507A?logo=sphinx)](https://docs.pytest.org/en/latest)- The pytest framework makes it easy to write small tests, yet scales to support complex functional testing
-* [ruff](https://github.com/astral-sh/ruff) [![PyPI](https://img.shields.io/badge/PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/ruff) [![Docs](https://img.shields.io/badge/MkDocs-526CFE?logo=materialformkdocs&logoColor=white)](https://docs.astral.sh/ruff)- An extremely fast Python linter and code formatter, written in Rust.
+- [maturin](https://github.com/PyO3/maturin) [![PyPI](https://img.shields.io/badge/PyPI-377549?logo=pypi&logoColor=white)](https://pypi.org/project/maturin) Build and publish crates with pyo3, rust-cpython and cffi bindings as well as rust binaries as python packages
+- [mypy](https://github.com/python/mypy) [![PyPI](https://img.shields.io/badge/PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/mypy) [![Docs](https://img.shields.io/readthedocs/mypy?logo=readthedocs)](https://mypy.readthedocs.io/en/stable/) Optional static typing for Python
+- [pytest](https://github.com/pytest-dev/pytest) [![PyPI](https://img.shields.io/badge/PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/pytest) [![Docs](https://img.shields.io/badge/Sphinx-0A507A?logo=sphinx)](https://docs.pytest.org/en/latest) The pytest framework makes it easy to write small tests, yet scales to support complex functional testing
+- [ruff](https://github.com/astral-sh/ruff) [![PyPI](https://img.shields.io/badge/PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/ruff) [![Docs](https://img.shields.io/badge/MkDocs-526CFE?logo=materialformkdocs&logoColor=white)](https://docs.astral.sh/ruff) An extremely fast Python linter and code formatter, written in Rust.
 
 Use the following commands to setup your local environment with development dependencies:
 
