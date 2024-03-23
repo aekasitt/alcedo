@@ -10,6 +10,7 @@ use std::string::String;
 static APP_USER_AGENT: &str = concat!(env!("CARGO_PKG_NAME"), "/", env!("CARGO_PKG_VERSION"),);
 
 mod client;
+mod json_value;
 mod response;
 use response::Response;
 
