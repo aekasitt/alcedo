@@ -25,6 +25,8 @@ classifiers = [
   'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
   'Topic :: Software Development :: Libraries :: Python Modules'
 ]
+license = {file='LICENSE'}
+keywords = ['client', 'http', 'https', 'httpx', 'request', 'requests', 'reqwest']
 name = 'alcedo'
 requires-python = '>=3.8'
 readme = 'README.md'
@@ -40,6 +42,7 @@ ignore_missing_imports = true
 [tool.poetry]
 authors = [ 'Sitt Guruvanich <aekazitt+github@gmail.com>' ]
 description = 'Oxidized and Optimistic HTTP Client for Python'
+license = 'MIT'
 name = 'alcedo'
 version = '0.1.3'
 packages = [{include='alcedo.pyi'}]
