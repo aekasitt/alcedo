@@ -86,7 +86,7 @@ dependencies including four extra libraries not included in final builds as such
   [![Docs](https://img.shields.io/badge/Sphinx-0A507A?logo=sphinx)](https://docs.pytest.org/en/latest)
 - **ruff** An extremely fast Python linter and code formatter, written in Rust.
   [![GitHub](https://img.shields.io/badge/GitHub-2B3137?logo=github&logoColor=white)](https://github.com/astral-sh/ruff)
-  [![PyPI](https://img.shields.io/badge/-PyPI:%20ruff-3775A9?logo=pypi)](https://pypi.org/project/ruff)
+  [![PyPI](https://img.shields.io/badge/-PyPI:%20ruff-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/ruff)
   [![Docs](https://img.shields.io/badge/MkDocs-526CFE?logo=materialformkdocs&logoColor=white)](https://docs.astral.sh/ruff) 
 
 Use the following commands to setup your local environment with development dependencies:
