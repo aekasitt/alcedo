@@ -10,21 +10,22 @@
 [![Last commit](https://img.shields.io/github/last-commit/aekasitt/alcedo/master)](.)
 
 ![Alcedo banner](https://github.com/aekasitt/alcedo/blob/master/static/alcedo-banner.svg)
+![README styling](static/styles.svg)
 
 This project aims to be the feature-incomplete version of [httpx](https://github.com/encode/httpx)
 and written in Rust.
 
 Will this be a drop-in replacement for any of the leading packages like...
 
-- 🐍 __aiohttp__ ?
+- 🐍 _aiohttp_ ?
   [![GitHub](https://img.shields.io/badge/GitHub-2B3137?logo=github&logoColor=white)](https://github.com/aio-libs/aiohttp)
   [![PyPI](https://img.shields.io/badge/PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/aiohttp)
   [![Docs](https://img.shields.io/readthedocs/aiohttp?logo=readthedocs)](https://docs.aiohttp.org/en/stable/)
-- 🐍 __httpx__ ?
+- 🐍 _httpx_ ?
   [![GitHub](https://img.shields.io/badge/GitHub-2B3137?logo=github&logoColor=white)](https://github.com/encode/httpx)
   [![PyPI](https://img.shields.io/badge/PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/httpx)
   [![Docs](https://img.shields.io/badge/MkDocs-526CFE?logo=materialformkdocs&logoColor=white)](https://www.python-httpx.org/)
-- 🐍 __requests__ ?
+- 🐍 _requests_ ?
   [![GitHub](https://img.shields.io/badge/GitHub-2B3137?logo=github&logoColor=white)](https://github.com/psf/requests)
   [![PyPI](https://img.shields.io/badge/PyPI-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/requests)
   [![Docs](https://img.shields.io/readthedocs/requests?logo=readthedocs)](https://requests.readthedocs.io/en/latest/)
