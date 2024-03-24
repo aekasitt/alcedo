@@ -5,10 +5,11 @@
 # VERSION: 	   0.1.0
 # CREATED: 	   2024-03-21 13:31
 # AUTHOR: 	   Sitt Guruvanich <aekazitt+github@gmail.com>
-# DESCRIPTION:
+# DESCRIPTION: https://www.w3docs.com/snippets/python/what-is-init-py-for.html
 #
 # HISTORY:
 # *************************************************************
+"""Module indicating that `~~/tests` directory is present in is a Python package."""
 
 ### Standard packages ###
 from multiprocessing import Process
