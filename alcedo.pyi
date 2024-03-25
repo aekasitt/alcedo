@@ -2,7 +2,7 @@
 # coding:utf-8
 # Copyright (C) 2024 All rights reserved.
 # FILENAME:    ~~/alcedo.pyi
-# VERSION: 	   0.1.0
+# VERSION: 	   0.1.4
 # CREATED: 	   2024-03-21 00:20
 # AUTHOR: 	   Sitt Guruvanich <aekazitt+github@gmail.com>
 # DESCRIPTION:
