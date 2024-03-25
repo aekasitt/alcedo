@@ -161,22 +161,22 @@
     />
   <path
     d="
-      M889, 460
-      h-389
+      M960, 460
+      h-460
       q-9,0 -9,9
       q0,9 9,9
-      h389
+      h460
       z
     "
     fill="#3572A5"
     />
   <path
     d="
-      M889, 460
-      h331
+      M960, 460
+      h260
       q9,0 9,9
       q0,9 -9,9
-      h-331
+      h-260
       z
     "
     fill="#DEA584"
@@ -196,12 +196,12 @@
     x='600px'
     y='520px'
     >
-    54.0%
+    63.7%
   </text>
   <text
     font-family='Arial'
     font-size='30'
-    x='889px'
+    x='960px'
     y='520px'
     >
     Rust
@@ -210,9 +210,9 @@
     fill='#888'
     font-family='Arial'
     font-size='30'
-    x='960px'
+    x='1030px'
     y='520px'
     >
-    46.0%
+    36.3%
   </text>
 </svg>
