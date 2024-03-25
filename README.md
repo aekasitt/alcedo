@@ -85,7 +85,7 @@ dependencies including four extra libraries not included in final builds as such
   [![GitHub](https://img.shields.io/badge/GitHub-2B3137?logo=github&logoColor=white)](https://github.com/pytest-dev/pytest)
   [![PyPI](https://img.shields.io/badge/-PyPI:%20pytest-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/pytest)
   [![Docs](https://img.shields.io/badge/Sphinx-0A507A?logo=sphinx)](https://docs.pytest.org/en/latest)
-- **ruf:** An extremely fast Python linter and code formatter, written in Rust.
+- **ruff** An extremely fast Python linter and code formatter, written in Rust.
   [![GitHub](https://img.shields.io/badge/GitHub-2B3137?logo=github&logoColor=white)](https://github.com/astral-sh/ruff)
   [![PyPI](https://img.shields.io/badge/-PyPI:%20ruff-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/ruff)
   [![Docs](https://img.shields.io/badge/MkDocs-526CFE?logo=materialformkdocs&logoColor=white)](https://docs.astral.sh/ruff) 
