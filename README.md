@@ -76,6 +76,7 @@ dependencies including four extra libraries not included in final builds as such
 - **maturin** Build and publish crates with pyo3, rust-cpython and cffi bindings as well as rust binaries as python packages
   [![GitHub](https://img.shields.io/badge/GitHub-2B3137?logo=github&logoColor=white)](https://github.com/PyO3/maturin)
   [![PyPI](https://img.shields.io/badge/-PyPI:%20maturin-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/maturin)
+  [![Docs](https://img.shields.io/badge/user-guide-brightgreen?logo=readthedocs)](https://maturin.rs)
 - **mypy** Optional static typing for Python
   [![GitHub](https://img.shields.io/badge/GitHub-2B3137?logo=github&logoColor=white)](https://github.com/python/mypy)
   [![PyPI](https://img.shields.io/badge/-PyPI:%20mypy-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/mypy)
@@ -84,7 +85,7 @@ dependencies including four extra libraries not included in final builds as such
   [![GitHub](https://img.shields.io/badge/GitHub-2B3137?logo=github&logoColor=white)](https://github.com/pytest-dev/pytest)
   [![PyPI](https://img.shields.io/badge/-PyPI:%20pytest-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/pytest)
   [![Docs](https://img.shields.io/badge/Sphinx-0A507A?logo=sphinx)](https://docs.pytest.org/en/latest)
-- **ruff** An extremely fast Python linter and code formatter, written in Rust.
+- **ruf:** An extremely fast Python linter and code formatter, written in Rust.
   [![GitHub](https://img.shields.io/badge/GitHub-2B3137?logo=github&logoColor=white)](https://github.com/astral-sh/ruff)
   [![PyPI](https://img.shields.io/badge/-PyPI:%20ruff-3775A9?logo=pypi&logoColor=white)](https://pypi.org/project/ruff)
   [![Docs](https://img.shields.io/badge/MkDocs-526CFE?logo=materialformkdocs&logoColor=white)](https://docs.astral.sh/ruff) 
