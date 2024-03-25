@@ -95,6 +95,17 @@ pip install --user poetry
 poetry install --with dev
 ```
 
+## Acknowledgements
+
+* [reqwest.py](https://github.com/thrzl/reqwest.py) by the amazing
+  [@thrzl](https://github.com/thrzl) giving the easiest primer to oxidizing python interface.
+* [hyperjson](https://github.com/mre/hyperjson) by the amazing
+  [@mre](https://github.com/mre) even though has been archived since Sep 14, 2023 but really makes
+  JSON deserialization from Rust -> Python really approachable compared to alternatives.
+* [Kingfisher 2017042438](https://freesvg.org/kingfisher-2017042438) under
+  [CC0 1.0 Public Domain Protection](https://creativecommons.org/publicdomain/) whoever made this 
+  is an artist du juor.
+
 ## License
 
 This project is licensed under the terms of the MIT license.
