@@ -66,7 +66,6 @@ print("Hello, World!")
 - Create implementation where POST body can be attached.
 - Create implementation where DELETE requests can be made.
 - Write asynchronous tests for `httpx` and `requests`
-- Write benchmarks for `httpx.Client` and `requests.Session`
 
 ## Contributions
 
