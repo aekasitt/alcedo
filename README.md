@@ -5,7 +5,6 @@
 [![Python version](https://img.shields.io/pypi/pyversions/alcedo)](https://pypi.org/project/alcedo)
 [![License](https://img.shields.io/pypi/l/alcedo)](https://pypi.org/project/alcedo)
 [![Code size](https://img.shields.io/github/languages/code-size/aekasitt/alcedo)](.)
-
 [![Top](https://img.shields.io/github/languages/top/aekasitt/alcedo)](.)
 [![Languages](https://img.shields.io/github/languages/count/aekasitt/alcedo)](.)
 [![Repository size](https://img.shields.io/github/repo-size/aekasitt/alcedo)](.)
