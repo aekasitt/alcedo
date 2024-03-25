@@ -41,7 +41,7 @@ like...
   [![Docs](https://img.shields.io/badge/Docs--rs-353535?logo=docs.rs)](https://docs.rs/hyper/latest/hyper/)
 - 🦀 **reqwest**
   [![GitHub](https://img.shields.io/badge/GitHub-2B3137?logo=github&logoColor=white)](https://github.com/seanmonstar/reqwest)
-  [![Crates](https://img.shields.io/badge/-%F0%9F%93%A6%20Crates:20reqwest-264323)](https://crates.io/crates/reqwest)
+  [![Crates](https://img.shields.io/badge/-%F0%9F%93%A6%20Crates:%20reqwest-264323)](https://crates.io/crates/reqwest)
   [![Docs](https://img.shields.io/badge/Docs--rs-353535?logo=docs.rs)](https://docs.rs/reqwest/latest/reqwest/)
 - 🦀 **serde**
   [![GitHub](https://img.shields.io/badge/GitHub-2B3137?logo=github&logoColor=white)](https://github.com/serde-rs/serde)
