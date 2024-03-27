@@ -2,9 +2,9 @@
 # coding:utf-8
 # Copyright (C) 2024 All rights reserved.
 # FILENAME:    ~~/tests/get/__init__.py
-# VERSION: 	   0.1.4
-# CREATED: 	   2024-03-25 01:55
-# AUTHOR: 	   Sitt Guruvanich <aekazitt+github@gmail.com>
+# VERSION:     0.1.5
+# CREATED:     2024-03-25 01:55
+# AUTHOR:      Sitt Guruvanich <aekazitt+github@gmail.com>
 # DESCRIPTION: https://www.w3docs.com/snippets/python/what-is-init-py-for.html
 #
 # HISTORY:
