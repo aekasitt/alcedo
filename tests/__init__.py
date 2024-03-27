@@ -46,7 +46,7 @@ def run_test_server() -> None:
 
   @app.post("/create", response_class=JSONResponse)
   async def create_post(request: Request) -> dict:
-    return {"received": loads(await request.body())}
+    return {"received": loads(await request.json())}
 
   run(app, host="localhost", port=6969)
 
