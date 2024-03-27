@@ -1,12 +1,13 @@
 // SPDX-License-Identifier: MIT
 
-use crate::{response::Response, APP_USER_AGENT};
-use pyo3::prelude::{pyclass, pymethods, PyResult};
-use reqwest::blocking::Client as BlockingClient;
+use crate::{dictionary::Dictionary, response::Response, APP_USER_AGENT};
+use pyo3::{pyclass, pymethods, PyObject, PyResult, Python};
+use reqwest::blocking::{Client as BlockingClient, RequestBuilder};
 use reqwest::header::{HeaderMap, HeaderName, HeaderValue};
 use reqwest::Method;
-
-use std::{collections::HashMap, str::FromStr};
+use serde_json::{json, to_string};
+use std::collections::HashMap;
+use std::str::FromStr;
 
 fn dict_to_headers(dict: HashMap<String, String>) -> HeaderMap {
     let mut headers = HeaderMap::with_capacity(dict.len());
@@ -39,32 +40,55 @@ impl Client {
         }
     }
 
+    fn get(&self, url: &str, headers: Option<HashMap<String, String>>) -> PyResult<Response> {
+        Ok(self.request("GET", url, headers, None))
+    }
+
+    fn post(
+        &self,
+        url: &str,
+        headers: Option<HashMap<String, String>>,
+        payload: Option<PyObject>,
+    ) -> PyResult<Response> {
+        Ok(self.request("POST", url, headers, payload))
+    }
+
     fn request(
         &self,
         method: &str,
         url: &str,
         headers: Option<HashMap<String, String>>,
+        payload: Option<PyObject>,
     ) -> Response {
-        let _client = self
+        let builder = self
             .blocking_client
             .request(Method::from_bytes(method.as_bytes()).unwrap(), url)
-            .headers(dict_to_headers(headers.unwrap_or(HashMap::new())))
-            .send()
-            .unwrap();
-        let mut h: HashMap<String, String> = HashMap::with_capacity(_client.headers().len());
-        for (key, value) in _client.headers().iter() {
+            .headers(dict_to_headers(headers.unwrap_or(HashMap::new())));
+        let req: Result<RequestBuilder, RequestBuilder> = match payload {
+            None => Ok(builder),
+            Some(value) => Python::with_gil(|py| {
+                let d = Dictionary {
+                    py,
+                    obj: value.extract(py).unwrap(),
+                };
+                // let body = to_string(&d).map_err(ser::Error::custom);
+                let body = to_string(&d).unwrap();
+                Ok(builder
+                    .header("Content-Type", "application/json")
+                    .json(&json!(body)))
+            }),
+        };
+        let response = req.unwrap().send().unwrap();
+        let mut h: HashMap<String, String> = HashMap::with_capacity(response.headers().len());
+        for (key, value) in response.headers().iter() {
             h.insert(key.to_string(), value.to_str().unwrap().to_string());
         }
-        let status = _client.status();
+        let status = response.status();
         Response {
             status: status.as_u16(),
             headers: h,
-            body: _client.text().unwrap(),
+            body: response.text().unwrap(),
             reason: status.canonical_reason().unwrap().to_string(),
         }
-    }
-
-    fn get(&self, url: &str, headers: Option<HashMap<String, String>>) -> PyResult<Response> {
-        Ok(self.request("GET", url, headers))
     }
 }

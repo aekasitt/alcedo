@@ -6,10 +6,10 @@ use pyo3::{create_exception, pyfunction, pymodule, wrap_pyfunction, PyResult, Py
 use reqwest::blocking::get as r_get;
 use std::collections::HashMap;
 use std::str::FromStr;
-use std::string::String;
 static APP_USER_AGENT: &str = concat!(env!("CARGO_PKG_NAME"), "/", env!("CARGO_PKG_VERSION"),);
 
 mod client;
+mod dictionary;
 mod json_value;
 mod response;
 use response::Response;

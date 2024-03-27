@@ -7,6 +7,7 @@ use serde::de::DeserializeSeed;
 use std::collections::HashMap;
 
 import_exception!(json, JSONDecodeError);
+import_exception!(json, JSONEncodeError);
 
 #[pyclass]
 pub struct Response {

@@ -12,12 +12,14 @@
 """Module indicating that `~~/tests` directory is present in is a Python package."""
 
 ### Standard packages ###
+from json import loads
 from multiprocessing import Process
 from time import sleep
 from typing import Generator
 
 ### Third-party packages ###
 from fastapi import FastAPI
+from fastapi.requests import Request
 from fastapi.responses import JSONResponse, PlainTextResponse, ORJSONResponse
 from pytest import fixture
 from uvicorn import run
@@ -41,6 +43,10 @@ def run_test_server() -> None:
   @app.get("/orjson", response_class=ORJSONResponse)
   async def orjson_endpoint() -> dict:
     return {"detail": "OK", "status": 200}
+
+  @app.post("/create", response_class=JSONResponse)
+  async def create_post(request: Request) -> dict:
+    return {"received": loads(await request.body())}
 
   run(app, host="localhost", port=6969)
 
