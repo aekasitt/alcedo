@@ -27,6 +27,14 @@ pub struct Client {
 
 #[pymethods]
 impl Client {
+    fn delete(&self, url: &str, headers: Option<HashMap<String, String>>) -> PyResult<Response> {
+        Ok(self.request("DELETE", url, headers, None))
+    }
+
+    fn get(&self, url: &str, headers: Option<HashMap<String, String>>) -> PyResult<Response> {
+        Ok(self.request("GET", url, headers, None))
+    }
+
     #[new]
     fn new(h: Option<HashMap<String, String>>) -> Self {
         let headers = h.unwrap_or(HashMap::new());
@@ -40,10 +48,6 @@ impl Client {
         }
     }
 
-    fn get(&self, url: &str, headers: Option<HashMap<String, String>>) -> PyResult<Response> {
-        Ok(self.request("GET", url, headers, None))
-    }
-
     fn post(
         &self,
         url: &str,
@@ -51,6 +55,15 @@ impl Client {
         payload: Option<PyObject>,
     ) -> PyResult<Response> {
         Ok(self.request("POST", url, headers, payload))
+    }
+
+    fn put(
+        &self,
+        url: &str,
+        headers: Option<HashMap<String, String>>,
+        payload: Option<PyObject>,
+    ) -> PyResult<Response> {
+        Ok(self.request("PUT", url, headers, payload))
     }
 
     fn request(
