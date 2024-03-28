@@ -72,7 +72,7 @@ types-requests = "^2.31.0.20240311"
 
 
 [tool.pytest.ini_options]
-addopts = '--durations=0 --tb=short'
+addopts = '--durations=0'
 markers = [
   'aiohttp: aiohttp benchmarks optional when running tests',
   'httpx: httpx benchmarks optional when running tests',

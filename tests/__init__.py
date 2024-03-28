@@ -38,11 +38,11 @@ def run_test_server() -> None:
 
   @app.get("/json", response_class=JSONResponse)
   async def json_endpoint() -> dict:
-    return {"detail": "OK", "status": 200}
+    return {"detail": "OK", "float": 1.234, "integer": 200, "null": None}
 
   @app.get("/orjson", response_class=ORJSONResponse)
   async def orjson_endpoint() -> dict:
-    return {"detail": "OK", "status": 200}
+    return {"detail": "OK", "float": 1.234, "integer": 200, "null": None}
 
   @app.post("/create", response_class=JSONResponse, status_code=201)
   async def create_post(request: Request) -> dict:

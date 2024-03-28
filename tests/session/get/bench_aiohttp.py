@@ -24,7 +24,12 @@ async def test_aiohttp_client_session_get_json_endpoint() -> None:
   async with ClientSession() as session:
     for _ in range(1_000):
       async with session.get(f"{ TEST_ENDPOINT }/json") as response:
-        assert await response.json() == {"detail": "OK", "status": 200}
+        assert await response.json() == {
+          "detail": "OK",
+          "float": 1.234,
+          "integer": 200,
+          "null": None,
+        }
 
 
 @mark.aiohttp
@@ -33,7 +38,12 @@ async def test_aiohttp_client_session_get_orjson_endpoint() -> None:
   async with ClientSession() as session:
     for _ in range(1_000):
       async with session.get(f"{ TEST_ENDPOINT }/orjson") as response:
-        assert await response.json() == {"detail": "OK", "status": 200}
+        assert await response.json() == {
+          "detail": "OK",
+          "float": 1.234,
+          "integer": 200,
+          "null": None,
+        }
 
 
 @mark.aiohttp

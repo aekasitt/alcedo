@@ -23,7 +23,7 @@ def test_requests_session_get_json_endpoint() -> None:
   session: Session = Session()
   for _ in range(1_000):
     response: Response = session.get(f"{ TEST_ENDPOINT }/json")
-    assert response.json() == {"detail": "OK", "status": 200}
+    assert response.json() == {"detail": "OK", "float": 1.234, "integer": 200, "null": None}
 
 
 @mark.requests
@@ -31,7 +31,7 @@ def test_requests_session_get_orjson_endpoint() -> None:
   session: Session = Session()
   for _ in range(1_000):
     response: Response = session.get(f"{ TEST_ENDPOINT }/orjson")
-    assert response.json() == {"detail": "OK", "status": 200}
+    assert response.json() == {"detail": "OK", "float": 1.234, "integer": 200, "null": None}
 
 
 @mark.requests
