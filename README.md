@@ -58,6 +58,10 @@ TBD;
 print("Hello, World!")
 ```
 
+## Do you even bench bro?
+
+[Benchmarks](./benchmarks.md)
+
 ## Roadmap
 
 - Write (actual) asynchronous tests for `aiohttp` benchmarks.
