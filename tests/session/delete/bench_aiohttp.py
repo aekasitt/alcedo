@@ -1,9 +1,9 @@
 #!/usr/bin/env python3.8
 # coding:utf-8
 # Copyright (C) 2024 All rights reserved.
-# FILENAME:    ~~/tests/session/post/bench_aiohttp.py
+# FILENAME:    ~~/tests/session/delete/bench_aiohttp.py
 # VERSION:     0.1.5
-# CREATED:     2024-03-25 02:00
+# CREATED:     2024-03-28 14:24
 # AUTHOR:      Sitt Guruvanich <aekazitt+github@gmail.com>
 # DESCRIPTION:
 #
@@ -23,9 +23,9 @@ from tests import *
 
 @mark.aiohttp
 @mark.asyncio
-async def test_aiohttp_client_session_post_create_endpoint() -> None:
+async def test_aiohttp_client_session_delete_endpoint() -> None:
   async with ClientSession() as session:
-    for i in range(1_000):
-      body: dict = {"hello": "world", "count": i}
-      async with session.post(f"{ TEST_ENDPOINT }/create", json=dumps(body)) as response:
-        assert await response.json() == {"created": body}
+    for _ in range(1_000):
+      async with session.delete(f"{ TEST_ENDPOINT }/delete") as response:
+        assert response.status == 204
+        assert await response.text() == ""

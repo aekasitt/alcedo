@@ -1,9 +1,9 @@
 #!/usr/bin/env python3.8
 # coding:utf-8
 # Copyright (C) 2024 All rights reserved.
-# FILENAME:    ~~/tests/session/post/bench_httpx.py
+# FILENAME:    ~~/tests/session/delete/bench_httpx.py
 # VERSION:     0.1.5
-# CREATED:     2024-03-27 20:58
+# CREATED:     2024-03-28 14:24
 # AUTHOR:      Sitt Guruvanich <aekazitt+github@gmail.com>
 # DESCRIPTION:
 #
@@ -22,9 +22,9 @@ from tests import *
 
 
 @mark.httpx
-def test_httpx_client_post_create_endpoint() -> None:
+def test_httpx_client_delete_endpoint() -> None:
   client: Client = Client()
-  for i in range(1_000):
-    body: dict = {"hello": "world", "count": i}
-    response: Response = client.post(f"{ TEST_ENDPOINT }/create", json=dumps(body))
-    assert response.json() == {"created": body}
+  for _ in range(1_000):
+    response: Response = client.delete(f"{ TEST_ENDPOINT }/delete")
+    assert response.status_code == 204
+    assert response.content == b""

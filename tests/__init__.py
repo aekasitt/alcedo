@@ -44,9 +44,16 @@ def run_test_server() -> None:
   async def orjson_endpoint() -> dict:
     return {"detail": "OK", "status": 200}
 
-  @app.post("/create", response_class=JSONResponse)
+  @app.post("/create", response_class=JSONResponse, status_code=201)
   async def create_post(request: Request) -> dict:
-    return {"received": loads(await request.json())}
+    return {"created": loads(await request.json())}
+
+  @app.put("/update", response_class=JSONResponse)
+  async def update_post(request: Request) -> dict:
+    return {"updated": loads(await request.json())}
+
+  @app.delete("/delete", response_class=PlainTextResponse, status_code=204)
+  async def delete_post() -> None: ...
 
   run(app, host="localhost", port=6969)
 
