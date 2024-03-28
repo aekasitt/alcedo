@@ -18,7 +18,7 @@ These benchmarks are run on Macbook Pro (Apple M1 Pro) 2022
 
 ### PyPy 3.10
 
-```
+```sh
 1.59s call     tests/get/bench.py::test_alcedo_get_json_endpoint
 1.24s call     tests/get/bench.py::test_alcedo_get_plaintext_endpoint
 0.56s call     tests/session/post/bench.py::test_alcedo_client_post_create
@@ -30,7 +30,7 @@ These benchmarks are run on Macbook Pro (Apple M1 Pro) 2022
 
 ### Python 3.12
 
-```
+```sh
 0.85s call     tests/get/bench.py::test_alcedo_get_json_endpoint
 0.82s call     tests/get/bench.py::test_alcedo_get_plaintext_endpoint
 0.79s call     tests/get/bench.py::test_alcedo_get_orjson_endpoint
