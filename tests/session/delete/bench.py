@@ -15,7 +15,7 @@ from alcedo import Client, Response
 from tests import *
 
 
-def test_alcedo_client_put_update_endpoint() -> None:
+def test_alcedo_client_delete_endpoint() -> None:
   client: Client = Client()
   for _ in range(1_000):
     response: Response = client.delete(f"{ TEST_ENDPOINT }/delete")
