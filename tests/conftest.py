@@ -63,4 +63,4 @@ def pytest_collection_modifyitems(config: Config, items: List[Item]) -> None:
       )
 
 
-__all__ = ["pytest_addoption", "pytest_collection_modifyitems"]
+__all__ = ("pytest_addoption", "pytest_collection_modifyitems")
