@@ -25,7 +25,7 @@ from tests import *
 @mark.asyncio
 async def test_aiohttp_client_session_put_update_endpoint() -> None:
   async with ClientSession() as session:
-    for i in range(1_000):
+    for i in range(RUNS):
       body: dict = {"hello": "world", "count": i}
       async with session.put(f"{ TEST_ENDPOINT }/update", json=dumps(body)) as response:
         assert await response.json() == {"updated": body}

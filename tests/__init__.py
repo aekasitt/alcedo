@@ -24,6 +24,7 @@ from fastapi.responses import JSONResponse, PlainTextResponse, ORJSONResponse
 from pytest import fixture
 from uvicorn import run
 
+RUNS: int = 1
 TEST_HOST: str = "localhost"
 TEST_PORT: int = 6969
 TEST_ENDPOINT: str = f"http://{ TEST_HOST }:{ TEST_PORT }"
@@ -73,4 +74,4 @@ def setup_teardown_api_server() -> Generator:
   process.terminate()
 
 
-__all__ = ("TEST_ENDPOINT", "setup_teardown_api_server")
+__all__ = ("RUNS", "TEST_ENDPOINT", "setup_teardown_api_server")

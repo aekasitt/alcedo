@@ -22,7 +22,7 @@ from tests import *
 @mark.asyncio
 async def test_aiohttp_client_session_get_json_endpoint() -> None:
   async with ClientSession() as session:
-    for _ in range(1_000):
+    for _ in range(RUNS):
       async with session.get(f"{ TEST_ENDPOINT }/json") as response:
         assert await response.json() == {
           "detail": "OK",
@@ -36,7 +36,7 @@ async def test_aiohttp_client_session_get_json_endpoint() -> None:
 @mark.asyncio
 async def test_aiohttp_client_session_get_orjson_endpoint() -> None:
   async with ClientSession() as session:
-    for _ in range(1_000):
+    for _ in range(RUNS):
       async with session.get(f"{ TEST_ENDPOINT }/orjson") as response:
         assert await response.json() == {
           "detail": "OK",
@@ -50,6 +50,6 @@ async def test_aiohttp_client_session_get_orjson_endpoint() -> None:
 @mark.asyncio
 async def test_aiohttp_client_session_get_plaintext_endpoint() -> None:
   async with ClientSession() as session:
-    for _ in range(1_000):
+    for _ in range(RUNS):
       async with session.get(f"{ TEST_ENDPOINT }/plaintext") as response:
         assert await response.text() == "OK"

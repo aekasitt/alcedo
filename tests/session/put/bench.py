@@ -17,7 +17,7 @@ from tests import *
 
 def test_alcedo_client_put_update_endpoint() -> None:
   client: Client = Client()
-  for i in range(1_000):
+  for i in range(RUNS):
     body: dict = {"hello": "world", "count": i + 1}
     response: Response = client.put(f"{ TEST_ENDPOINT }/update", payload=body)
     assert response.json() == {"updated": body}

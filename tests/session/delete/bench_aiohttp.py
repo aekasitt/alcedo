@@ -25,7 +25,7 @@ from tests import *
 @mark.asyncio
 async def test_aiohttp_client_session_delete_endpoint() -> None:
   async with ClientSession() as session:
-    for _ in range(1_000):
+    for _ in range(RUNS):
       async with session.delete(f"{ TEST_ENDPOINT }/delete") as response:
         assert response.status == 204
         assert await response.text() == ""

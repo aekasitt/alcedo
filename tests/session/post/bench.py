@@ -17,7 +17,7 @@ from tests import *
 
 def test_alcedo_client_post_create() -> None:
   client: Client = Client()
-  for i in range(1_000):
+  for i in range(RUNS):
     body: dict = {"hello": "world", "count": i + 1}
     response: Response = client.post(f"{ TEST_ENDPOINT }/create", payload=body)
     assert response.json() == {"created": body}

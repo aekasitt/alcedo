@@ -17,7 +17,7 @@ from tests import *
 
 def test_alcedo_client_delete_endpoint() -> None:
   client: Client = Client()
-  for _ in range(1_000):
+  for _ in range(RUNS):
     response: Response = client.delete(f"{ TEST_ENDPOINT }/delete")
     # assert response.status == 204
     assert response.text() == ""

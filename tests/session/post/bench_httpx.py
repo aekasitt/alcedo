@@ -24,7 +24,7 @@ from tests import *
 @mark.httpx
 def test_httpx_client_post_create_endpoint() -> None:
   client: Client = Client()
-  for i in range(1_000):
+  for i in range(RUNS):
     body: dict = {"hello": "world", "count": i}
     response: Response = client.post(f"{ TEST_ENDPOINT }/create", json=dumps(body))
     assert response.json() == {"created": body}

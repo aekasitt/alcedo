@@ -24,7 +24,7 @@ from tests import *
 @mark.requests
 def test_requests_session_client_delete_endpoint() -> None:
   session: Session = Session()
-  for _ in range(1_000):
+  for _ in range(RUNS):
     response: Response = session.delete(f"{ TEST_ENDPOINT }/delete")
     assert response.status_code == 204
     assert response.content == b""

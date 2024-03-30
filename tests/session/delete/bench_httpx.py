@@ -24,7 +24,7 @@ from tests import *
 @mark.httpx
 def test_httpx_client_delete_endpoint() -> None:
   client: Client = Client()
-  for _ in range(1_000):
+  for _ in range(RUNS):
     response: Response = client.delete(f"{ TEST_ENDPOINT }/delete")
     assert response.status_code == 204
     assert response.content == b""

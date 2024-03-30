@@ -21,7 +21,7 @@ from tests import *
 @mark.httpx
 def test_httpx_client_get_json_endpoint() -> None:
   client: Client = Client()
-  for _ in range(1_000):
+  for _ in range(RUNS):
     response: Response = client.get(f"{ TEST_ENDPOINT }/json")
     assert response.json() == {"detail": "OK", "float": 1.234, "integer": 200, "null": None}
 
@@ -29,7 +29,7 @@ def test_httpx_client_get_json_endpoint() -> None:
 @mark.httpx
 def test_httpx_client_get_orjson_endpoint() -> None:
   client: Client = Client()
-  for _ in range(1_000):
+  for _ in range(RUNS):
     response: Response = client.get(f"{ TEST_ENDPOINT }/orjson")
     assert response.json() == {"detail": "OK", "float": 1.234, "integer": 200, "null": None}
 
@@ -37,6 +37,6 @@ def test_httpx_client_get_orjson_endpoint() -> None:
 @mark.httpx
 def test_httpx_client_get_plaintext_endpoint() -> None:
   client: Client = Client()
-  for _ in range(1_000):
+  for _ in range(RUNS):
     response: Response = client.get(f"{ TEST_ENDPOINT }/plaintext")
     assert response.text == "OK"

@@ -24,7 +24,7 @@ from tests import *
 @mark.httpx
 def test_httpx_client_put_update_endpoint() -> None:
   client: Client = Client()
-  for i in range(1_000):
+  for i in range(RUNS):
     body: dict = {"hello": "world", "count": i}
     response: Response = client.put(f"{ TEST_ENDPOINT }/update", json=dumps(body))
     assert response.json() == {"updated": body}

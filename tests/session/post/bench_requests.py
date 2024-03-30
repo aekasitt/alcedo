@@ -24,7 +24,7 @@ from tests import *
 @mark.requests
 def test_requests_session_client_post_endpoint() -> None:
   session: Session = Session()
-  for i in range(1_000):
+  for i in range(RUNS):
     body: dict = {"hello": "world", "count": i}
     response: Response = session.post(f"{ TEST_ENDPOINT }/create", json=dumps(body))
     assert response.json() == {"created": body}
