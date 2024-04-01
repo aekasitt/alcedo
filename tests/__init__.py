@@ -24,7 +24,7 @@ from fastapi.responses import JSONResponse, PlainTextResponse, ORJSONResponse
 from pytest import fixture
 from uvicorn import run
 
-RUNS: int = 1
+RUNS: int = 1_000
 TEST_HOST: str = "localhost"
 TEST_PORT: int = 6969
 TEST_ENDPOINT: str = f"http://{ TEST_HOST }:{ TEST_PORT }"
