@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 
 use pyo3::types::{PyAny, PyDict, PyFloat, PyList, PyTuple};
-use pyo3::{FromPyObject, PyTryFrom, Python};
+use pyo3::{FromPyObject, Python};
 use serde::ser::{self, Serialize, SerializeMap, SerializeSeq, Serializer};
 use std::string::String;
 
@@ -17,7 +17,7 @@ impl<'p, 'a> Serialize for Dictionary<'p, 'a> {
     {
         macro_rules! cast {
             ($f:expr) => {
-                if let Ok(val) = PyTryFrom::try_from(self.obj) {
+                if let Ok(val) = FromPyObject::extract(self.obj) {
                     return $f(val);
                 }
             };
