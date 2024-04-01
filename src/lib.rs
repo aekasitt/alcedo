@@ -2,7 +2,7 @@
 
 use pyo3::exceptions::PyException;
 use pyo3::types::PyModule;
-use pyo3::{create_exception, pyfunction, pymodule, wrap_pyfunction, PyResult, Python};
+use pyo3::{create_exception, pyfunction, pymodule, wrap_pyfunction, Bound, PyResult};
 use reqwest::blocking::get as r_get;
 use std::collections::HashMap;
 use std::str::FromStr;
@@ -37,9 +37,9 @@ fn get(url: &str) -> PyResult<Response> {
 }
 
 #[pymodule]
-fn alcedo(_py: Python, m: &PyModule) -> PyResult<()> {
-    m.add_function(wrap_pyfunction!(get, m)?)?;
-    m.add_class::<client::Client>()?;
-    m.add_class::<Response>()?;
+fn alcedo(module: &Bound<'_, PyModule>) -> PyResult<()> {
+    module.add_function(wrap_pyfunction!(get, module)?)?;
+    module.add_class::<client::Client>()?;
+    module.add_class::<Response>()?;
     Ok(())
 }
