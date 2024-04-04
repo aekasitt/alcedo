@@ -2,7 +2,7 @@
 # coding:utf-8
 # Copyright (C) 2024 All rights reserved.
 # FILENAME:    ~~/tests/session/post/bench_aiohttp.py
-# VERSION:     0.1.5
+# VERSION:     0.1.6
 # CREATED:     2024-03-25 02:00
 # AUTHOR:      Sitt Guruvanich <aekazitt+github@gmail.com>
 # DESCRIPTION:

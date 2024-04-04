@@ -44,7 +44,7 @@ authors = [ 'Sitt Guruvanich <aekazitt+github@gmail.com>' ]
 description = 'Oxidized and Optimistic HTTP Client for Python'
 license = 'MIT'
 name = 'alcedo'
-version = '0.1.5'
+version = '0.1.6'
 packages = [{include='alcedo.pyi'}]
 
 
