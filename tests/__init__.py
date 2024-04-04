@@ -14,6 +14,7 @@
 ### Standard packages ###
 from json import loads
 from multiprocessing import Process
+from urllib.parse import parse_qs
 from time import sleep
 from typing import Generator
 
@@ -38,12 +39,28 @@ def run_test_server() -> None:
     return "OK"
 
   @app.get("/json", response_class=JSONResponse)
-  async def json_endpoint() -> dict:
-    return {"detail": "OK", "float": 1.234, "integer": 200, "null": None}
+  async def json_endpoint(request: Request) -> dict:
+    response = {
+      "detail": "OK",
+      "float": 1.234,
+      "integer": 200,
+      "null": None,
+    }
+    if len(request.query_params) > 0:
+      response["query"] = parse_qs(str(request.query_params))
+    return response
 
   @app.get("/orjson", response_class=ORJSONResponse)
-  async def orjson_endpoint() -> dict:
-    return {"detail": "OK", "float": 1.234, "integer": 200, "null": None}
+  async def orjson_endpoint(request: Request) -> dict:
+    response = {
+      "detail": "OK",
+      "float": 1.234,
+      "integer": 200,
+      "null": None,
+    }
+    if len(request.query_params) > 0:
+      response["query"] = parse_qs(str(request.query_params))
+    return response
 
   @app.post("/create", response_class=JSONResponse, status_code=201)
   async def create_post(request: Request) -> dict:

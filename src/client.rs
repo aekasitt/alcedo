@@ -27,12 +27,22 @@ pub struct Client {
 
 #[pymethods]
 impl Client {
-    fn delete(&self, url: &str, headers: Option<HashMap<String, String>>) -> PyResult<Response> {
-        Ok(self.request("DELETE", url, headers, None))
+    fn delete(
+        &self,
+        url: &str,
+        headers: Option<HashMap<String, String>>,
+        query: Option<PyObject>,
+    ) -> PyResult<Response> {
+        Ok(self.request("DELETE", url, headers, query, None))
     }
 
-    fn get(&self, url: &str, headers: Option<HashMap<String, String>>) -> PyResult<Response> {
-        Ok(self.request("GET", url, headers, None))
+    fn get(
+        &self,
+        url: &str,
+        headers: Option<HashMap<String, String>>,
+        query: Option<PyObject>,
+    ) -> PyResult<Response> {
+        Ok(self.request("GET", url, headers, query, None))
     }
 
     #[new]
@@ -52,18 +62,20 @@ impl Client {
         &self,
         url: &str,
         headers: Option<HashMap<String, String>>,
+        query: Option<PyObject>,
         payload: Option<PyObject>,
     ) -> PyResult<Response> {
-        Ok(self.request("POST", url, headers, payload))
+        Ok(self.request("POST", url, headers, query, payload))
     }
 
     fn put(
         &self,
         url: &str,
         headers: Option<HashMap<String, String>>,
+        query: Option<PyObject>,
         payload: Option<PyObject>,
     ) -> PyResult<Response> {
-        Ok(self.request("PUT", url, headers, payload))
+        Ok(self.request("PUT", url, headers, query, payload))
     }
 
     fn request(
@@ -71,13 +83,14 @@ impl Client {
         method: &str,
         url: &str,
         headers: Option<HashMap<String, String>>,
+        query: Option<PyObject>,
         payload: Option<PyObject>,
     ) -> Response {
         let builder = self
             .blocking_client
             .request(Method::from_bytes(method.as_bytes()).unwrap(), url)
             .headers(dict_to_headers(headers.unwrap_or(HashMap::new())));
-        let req: Result<RequestBuilder, RequestBuilder> = match payload {
+        let mut req: Result<RequestBuilder, RequestBuilder> = match payload {
             None => Ok(builder),
             Some(value) => Python::with_gil(|py| {
                 let d = Dictionary {
@@ -89,6 +102,16 @@ impl Client {
                 Ok(builder
                     .header("Content-Type", "application/json")
                     .json(&json!(body)))
+            }),
+        };
+        req = match query {
+            None => req,
+            Some(value) => Python::with_gil(|py| {
+                let d = Dictionary {
+                    py,
+                    obj: value.extract(py).unwrap(),
+                };
+                Ok(req.unwrap().query(&d))
             }),
         };
         let response = req.unwrap().send().unwrap();
