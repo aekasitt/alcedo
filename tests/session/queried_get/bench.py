@@ -18,7 +18,9 @@ from tests import *
 def test_alcedo_client_get_json_endpoint() -> None:
   client: Client = Client()
   for i in range(RUNS):
-    response: Response = client.get(f"{ TEST_ENDPOINT }/json", query={"foo": "bar", "index": i})
+    response: Response = client.get(
+      f"{ TEST_ENDPOINT }/json", query={"foo": "bar", "index": i, "null": None}
+    )
     assert response.json() == {
       "detail": "OK",
       "float": 1.234,
