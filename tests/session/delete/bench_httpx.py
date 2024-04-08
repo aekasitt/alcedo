@@ -2,7 +2,7 @@
 # coding:utf-8
 # Copyright (C) 2024 All rights reserved.
 # FILENAME:    ~~/tests/session/delete/bench_httpx.py
-# VERSION:     0.1.6
+# VERSION:     0.1.7
 # CREATED:     2024-03-28 14:24
 # AUTHOR:      Sitt Guruvanich <aekazitt+github@gmail.com>
 # DESCRIPTION:
