@@ -5,12 +5,12 @@ use pyo3::{FromPyObject, Python};
 use serde::ser::{self, Serialize, SerializeMap, SerializeSeq, Serializer};
 use std::string::String;
 
-pub struct Dictionary<'p, 'a> {
+pub struct SerializePyObject<'p, 'a> {
     pub py: Python<'p>,
     pub obj: &'a PyAny,
 }
 
-impl<'p, 'a> Serialize for Dictionary<'p, 'a> {
+impl<'p, 'a> Serialize for SerializePyObject<'p, 'a> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
@@ -48,7 +48,7 @@ impl<'p, 'a> Serialize for Dictionary<'p, 'a> {
                         key
                     )));
                 }
-                map.serialize_value(&Dictionary {
+                map.serialize_value(&SerializePyObject {
                     py: self.py,
                     obj: value,
                 })?;
@@ -59,7 +59,7 @@ impl<'p, 'a> Serialize for Dictionary<'p, 'a> {
         cast!(|x: &PyList| {
             let mut seq = serializer.serialize_seq(Some(x.len()))?;
             for element in x {
-                seq.serialize_element(&Dictionary {
+                seq.serialize_element(&SerializePyObject {
                     py: self.py,
                     obj: element,
                 })?
@@ -69,7 +69,7 @@ impl<'p, 'a> Serialize for Dictionary<'p, 'a> {
         cast!(|x: &PyTuple| {
             let mut seq = serializer.serialize_seq(Some(x.len()))?;
             for element in x {
-                seq.serialize_element(&Dictionary {
+                seq.serialize_element(&SerializePyObject {
                     py: self.py,
                     obj: element,
                 })?

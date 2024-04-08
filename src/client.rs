@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-use crate::{dictionary::Dictionary, response::Response, APP_USER_AGENT};
+use crate::{response::Response, serialize_py_object::SerializePyObject, APP_USER_AGENT};
 use pyo3::{pyclass, pymethods, PyObject, PyResult, Python};
 use reqwest::blocking::{Client as BlockingClient, RequestBuilder};
 use reqwest::header::{HeaderMap, HeaderName, HeaderValue};
@@ -93,12 +93,12 @@ impl Client {
         let mut req: Result<RequestBuilder, RequestBuilder> = match payload {
             None => Ok(builder),
             Some(value) => Python::with_gil(|py| {
-                let d = Dictionary {
+                let serialized = SerializePyObject {
                     py,
                     obj: value.extract(py).unwrap(),
                 };
                 // let body = to_string(&d).map_err(ser::Error::custom);
-                let body = to_string(&d).unwrap();
+                let body = to_string(&serialized).unwrap();
                 Ok(builder
                     .header("Content-Type", "application/json")
                     .json(&json!(body)))
@@ -107,11 +107,11 @@ impl Client {
         req = match query {
             None => req,
             Some(value) => Python::with_gil(|py| {
-                let d = Dictionary {
+                let serialized = SerializePyObject {
                     py,
                     obj: value.extract(py).unwrap(),
                 };
-                Ok(req.unwrap().query(&d))
+                Ok(req.unwrap().query(&serialized))
             }),
         };
         let response = req.unwrap().send().unwrap();

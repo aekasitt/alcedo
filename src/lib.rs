@@ -9,9 +9,9 @@ use std::str::FromStr;
 static APP_USER_AGENT: &str = concat!(env!("CARGO_PKG_NAME"), "/", env!("CARGO_PKG_VERSION"),);
 
 mod client;
-mod dictionary;
 mod json_value;
 mod response;
+mod serialize_py_object;
 use response::Response;
 
 create_exception!(reqwest, HTTPError, PyException);
