@@ -8,6 +8,7 @@ use std::collections::HashMap;
 use std::str::FromStr;
 static APP_USER_AGENT: &str = concat!(env!("CARGO_PKG_NAME"), "/", env!("CARGO_PKG_VERSION"),);
 
+mod async_client;
 mod client;
 mod json_value;
 mod response;

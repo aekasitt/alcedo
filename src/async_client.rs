@@ -1,48 +1,38 @@
 // SPDX-License-Identifier: MIT
 
-use crate::{response::Response, serialize_py_object::SerializePyObject, APP_USER_AGENT};
+use crate::client::dict_to_headers;
+use crate::response::Response;
+use crate::serialize_py_object::SerializePyObject;
+use crate::APP_USER_AGENT;
 use pyo3::{pyclass, pymethods, PyObject, PyResult, Python};
 use reqwest::blocking::{Client as BlockingClient, RequestBuilder};
-use reqwest::header::{HeaderMap, HeaderName, HeaderValue};
 use reqwest::Method;
 use serde_json::{json, to_string};
 use std::collections::HashMap;
-use std::str::FromStr;
-
-pub fn dict_to_headers(dict: HashMap<String, String>) -> HeaderMap {
-    let mut headers = HeaderMap::with_capacity(dict.len());
-    for (key, value) in dict {
-        headers.insert(
-            HeaderName::from_str(&key).unwrap(),
-            HeaderValue::from_str(&value).unwrap(),
-        );
-    }
-    headers
-}
 
 #[pyclass]
-pub struct Client {
+pub struct AsyncClient {
     blocking_client: BlockingClient,
 }
 
 #[pymethods]
-impl Client {
-    fn delete(
+impl AsyncClient {
+    async fn delete(
         &self,
         url: &str,
         headers: Option<HashMap<String, String>>,
         query: Option<PyObject>,
     ) -> PyResult<Response> {
-        Ok(self.request("DELETE", url, headers, query, None))
+        Ok(self.request("DELETE", url, headers, query, None).await?)
     }
 
-    fn get(
+    async fn get(
         &self,
         url: &str,
         headers: Option<HashMap<String, String>>,
         query: Option<PyObject>,
     ) -> PyResult<Response> {
-        Ok(self.request("GET", url, headers, query, None))
+        Ok(self.request("GET", url, headers, query, None).await?)
     }
 
     #[new]
@@ -58,27 +48,27 @@ impl Client {
         }
     }
 
-    fn post(
+    async fn post(
         &self,
         url: &str,
         headers: Option<HashMap<String, String>>,
         query: Option<PyObject>,
         payload: Option<PyObject>,
     ) -> PyResult<Response> {
-        Ok(self.request("POST", url, headers, query, payload))
+        Ok(self.request("POST", url, headers, query, payload).await?)
     }
 
-    fn put(
+    async fn put(
         &self,
         url: &str,
         headers: Option<HashMap<String, String>>,
         query: Option<PyObject>,
         payload: Option<PyObject>,
     ) -> PyResult<Response> {
-        Ok(self.request("PUT", url, headers, query, payload))
+        Ok(self.request("PUT", url, headers, query, payload).await?)
     }
 
-    fn request(
+    async fn request(
         &self,
         method: &str,
         url: &str,
@@ -114,7 +104,7 @@ impl Client {
                 Ok(req.unwrap().query(&serialized))
             }),
         };
-        let response = req.unwrap().send().unwrap();
+        let response = req.unwrap().await?;
         let mut h: HashMap<String, String> = HashMap::with_capacity(response.headers().len());
         for (key, value) in response.headers().iter() {
             h.insert(key.to_string(), value.to_str().unwrap().to_string());
